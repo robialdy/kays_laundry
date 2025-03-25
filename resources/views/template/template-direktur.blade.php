@@ -4,11 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Mazer Admin Dashboard</title>
+    <title>@yield('title', 'Kays Laundry')</title>
 
   <link rel="stylesheet" href="{{ asset('assets/compiled/css/app.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/compiled/css/app-dark.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/compiled/css/iconly.css') }}">
+
+  {{-- extension --}}
+  <link rel="stylesheet" href="{{ asset('assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/extensions/choices.js/public/assets/styles/choices.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/extensions/sweetalert2/sweetalert2.min.css') }}">
 </head>
 
 <body>
@@ -57,24 +62,24 @@
         <ul class="menu">
             <li class="sidebar-title">Menu</li>
 
-            <li
-                class="sidebar-item  ">
-                <a href="index.html" class='sidebar-link'>
+            <li class="sidebar-item  {{ request()->is('direktur') ? 'active' : '' }}">
+                <a href="{{ route('dashboard.direktur') }}" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Dashboard</span>
                 </a>
-
-
             </li>
 
-            <li class="sidebar-item  has-sub">
+            <li class="sidebar-item  has-sub {{ request()->is('direktur/cabang*') || request()->is('direktur/layanan*') ? 'active' : '' }}">
                 <a href="#" class='sidebar-link'>
                     <i class="bi bi-stack"></i>
-                    <span>Components</span>
+                    <span>Master Data</span>
                 </a>
                 <ul class="submenu ">
-                    <li class="submenu-item  ">
-                        <a href="component-accordion.html" class="submenu-link">Accordion</a>
+                    <li class="submenu-item  {{ request()->is('direktur/cabang*') ? 'active' : '' }}">
+                        <a href="{{ route('cabang') }}" class="submenu-link">Cabang</a>
+                    </li>
+                    <li class="submenu-item {{ request()->is('direktur/layanan*') ? 'active' : '' }} ">
+                        <a href="{{ route('cabang.create') }}" class="submenu-link">Layanan</a>
                     </li>
                 </ul>
             </li>
@@ -182,40 +187,12 @@
                     </div>
                 </nav>
             </header>
+
+
             <div id="main-content">
+            @yield('content')
+            </div>
 
-<div class="page-heading">
-    <div class="page-title">
-        <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Vertical Layout with Navbar</h3>
-                <p class="text-subtitle text-muted">Navbar will appear on the top of the page.</p>
-            </div>
-            <div class="col-12 col-md-6 order-md-2 order-first">
-                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Layout Vertical Navbar</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-    <section class="section">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">About Vertical Navbar</h4>
-            </div>
-            <div class="card-body">
-                <p>Vertical Navbar is a layout option that you can use with Mazer. </p>
-
-                <p>In case you want the navbar to be sticky on top while scrolling, add <code>.navbar-fixed</code> class alongside with <code>.layout-navbar</code> class.</p>
-            </div>
-        </div>
-    </section>
-</div>
-
-            </div>
             <footer>
     <div class="footer clearfix mb-0 text-muted">
         <div class="float-start">
@@ -234,6 +211,39 @@
 
 
     <script src="{{ asset('assets/compiled/js/app.js') }}"></script>
+
+    {{-- extensi --}}
+    <script src="{{ asset('assets/extensions/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/extensions/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/extensions/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ asset('assets/static/js/pages/datatables.js') }}"></script>
+
+    <script src="{{ asset('assets/extensions/choices.js/public/assets/scripts/choices.js') }}"></script>
+    <script src="{{ asset('assets/static/js/pages/form-element-select.js') }}"></script>
+
+    {{-- notifikasi --}}
+    <script src="{{ asset('assets/extensions/sweetalert2/sweetalert2.min.js') }}"></script>
+    <script>
+        const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+    </script>
+    @if (session('success'))
+    <script>
+    Toast.fire({
+        icon: 'success',
+        title: '{{ session("success") }}'
+    })
+    </script>
+    @endif
 
 </body>
 

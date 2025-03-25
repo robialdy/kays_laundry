@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('kota');
             $table->text('alamat');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
