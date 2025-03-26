@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\direktur\PaketController;
 use App\Http\Controllers\direktur\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -75,6 +76,20 @@ Route::middleware(['auth', 'role:D'])->group(function(){
             // delete
             Route::delete('delete/{id}', [UserController::class, 'delete'])->name('user.delete');
         });
+
+        // PAKET
+        Route::prefix('paket')->group(function(){
+            Route::get('', [PaketController::class, 'index'])->name('paket');
+            // create
+            Route::get('create', [PaketController::class, 'create'])->name('paket.create');
+            Route::post('store', [PaketController::class, 'store'])->name('paket.store');
+            // edit
+            Route::get('edit/{id}', [PaketController::class, 'edit'])->name('paket.edit');
+            Route::put('update/{id}', [PaketController::class, 'update'])->name('paket.update');
+            // delete
+            Route::delete('delete/{id}', [PaketController::class, 'delete'])->name('paket.delete');
+        });
+        
     });
 });
 

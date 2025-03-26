@@ -69,6 +69,13 @@
                 </a>
             </li>
 
+            <li class="sidebar-item  {{ request()->is('paket*') ? 'active' : '' }}">
+                <a href="{{ route('paket') }}" class='sidebar-link'>
+                    <i class="bi bi-grid-fill"></i>
+                    <span>Paket</span>
+                </a>
+            </li>
+
             <li class="sidebar-item  {{ request()->is('user*') ? 'active' : '' }}">
                 <a href="{{ route('user') }}" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
