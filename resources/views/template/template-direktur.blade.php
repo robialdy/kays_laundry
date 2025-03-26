@@ -79,7 +79,7 @@
                         <a href="{{ route('cabang') }}" class="submenu-link">Cabang</a>
                     </li>
                     <li class="submenu-item {{ request()->is('direktur/layanan*') ? 'active' : '' }} ">
-                        <a href="{{ route('cabang.create') }}" class="submenu-link">Layanan</a>
+                        <a href="{{ route('layanan') }}" class="submenu-link">Layanan</a>
                     </li>
                 </ul>
             </li>

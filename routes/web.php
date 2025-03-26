@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\direktur\CabangController;
 use App\Http\Controllers\direktur\DashboardController as DirekturDashboardController;
+use App\Http\Controllers\direktur\LayananController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,5 +24,13 @@ Route::prefix('direktur')->group(function() {
         Route::put('update/{id}', [CabangController::class, 'update'])->name('cabang.update');
         // delete
         Route::delete('delete/{id}', [CabangController::class, 'delete'])->name('cabang.delete');
+    });
+
+    // LAYANAN
+    Route::prefix('layanan')->group(function(){
+        Route::get('', [LayananController::class, 'index'])->name('layanan');
+        // create
+        Route::get('create', [LayananController::class, 'create'])->name('layanan.create');
+        Route::get('prefix', [LayananController::class, 'store'])->name('layanan.store');
     });
 });

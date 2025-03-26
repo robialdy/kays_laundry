@@ -9,14 +9,14 @@
     <div class="page-title">
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
-                <h3>Cabang</h3>
+                <h3>Layanan</h3>
                 <p class="text-subtitle text-muted"></p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Cabang</li>
+                        <li class="breadcrumb-item active" aria-current="page">Layanan</li>
                     </ol>
                 </nav>
             </div>
@@ -24,7 +24,7 @@
     </div>
 
 <div class="text-end mb-3">
-    <a href="{{ route('cabang.create') }}" class="btn btn-primary">Tambah Cabang</a>
+    <a href="{{ route('layanan.create') }}" class="btn btn-primary">Tambah Layanan</a>
 </div>
 
     <section class="section">
@@ -41,27 +41,23 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Cabang</th>
-                                <th>Kode</th>
-                                <th>Kota</th>
-                                <th>Alamat</th>
+                                <th>No Layanan</th>
+                                <th>Nama Layanan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($cabangs as $cabang)
+                            @foreach ($layanans as $layanan)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $cabang->nama_cabang }}</td>
-                                <td>{{ $cabang->kode_cabang }}</td>
-                                <td>{{ $cabang->kota }}</td>
-                                <td>{{ $cabang->alamat }}</td>
+                                <td>{{ $layanan->no_layanan }}</td>
+                                <td>{{ $layanan->nama_layanan }}</td>
                                 <td>
-                                    <a href="{{ route('cabang.edit', $cabang->kode_cabang) }}" class="btn btn-link">Edit</a>
-                                    <form action="{{ route('cabang.delete', $cabang->id) }}" method="post">
+                                    <a href="" class="btn btn-link text-danger">Edit</a>
+                                    <form action="" method="post">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-link text-danger" onclick="return confirm('yakin ingin menghapus cabang?')">Delete</button>
+                                        <button type="submit" class="btn btn-link text-danger" onclick="return confirm('Apakah anda yakin ingin menghapus layanan?')">Delete</button>
                                     </form>
                                 </td>
                             </tr>
