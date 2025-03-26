@@ -24,29 +24,36 @@
             <h1 class="auth-title">Log in.</h1>
             <p class="auth-subtitle mb-5">Silahkan Login.</p>
 
-            <form action="index.html">
+            <form action="{{ route('auth.login') }}" method="post">
+                @csrf
                 <div class="form-group position-relative has-icon-left mb-4">
-                    <input type="text" class="form-control form-control-xl" placeholder="Username">
+                    <input type="text" class="form-control form-control-xl" placeholder="Username" name="username" value="{{ old('username') }}">
                     <div class="form-control-icon">
                         <i class="bi bi-person"></i>
                     </div>
                     @error('username')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
+                    @if (session('error-username'))
+                        <small class="text-danger">{{ session('error-username') }}</small>
+                    @endif
                 </div>
                 <div class="form-group position-relative has-icon-left mb-4">
-                    <input type="password" class="form-control form-control-xl" placeholder="Password">
+                    <input type="password" class="form-control form-control-xl" placeholder="Password" name="password">
                     <div class="form-control-icon">
                         <i class="bi bi-shield-lock"></i>
                     </div>
                     @error('password')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
+                    @if (session('error-password'))
+                        <small class="text-danger">{{ session('error-password') }}</small>
+                    @endif
                 </div>
                 <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
             </form>
             <div class="text-center mt-5 text-lg fs-4">
-                <p class="text-gray-600">Don't have an account? <a href="auth-register.html" class="font-bold">Sign
+                <p class="text-gray-600">Don't have an account? <a href="{{ route('auth.register') }}" class="font-bold">Sign
                         up</a>.</p>
             </div>
         </div>
