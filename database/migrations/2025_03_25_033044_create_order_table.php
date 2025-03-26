@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('nama_off')->nullable();
             $table->string('no_hp_off', 15)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

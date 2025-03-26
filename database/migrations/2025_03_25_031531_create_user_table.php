@@ -20,13 +20,13 @@ return new class extends Migration
             $table->string('alamat_lengkap');
             $table->enum('role', ['OC', 'PC', 'C', 'D','K']);
             $table->string('username')->unique();
-            $table->foreignId('id_cabang')->constrained('cabang')->onDelete('cascade')->onUpdate('cascade'); 
+            $table->foreignId('id_cabang')->constrained('cabang')->onDelete('cascade')->onUpdate('cascade');
             $table->string('status')->default('Offline');
             $table->string('password', 350);
             $table->timestamps();
         });
     }
-    
+
 
     /**
      * Reverse the migrations.

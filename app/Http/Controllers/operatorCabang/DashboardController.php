@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\direktur;
+namespace App\Http\Controllers\operatorCabang;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cabang;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -11,8 +10,8 @@ class DashboardController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Dashboard Direktur',
+            'title' => 'Dashboard Operator Cabang',
         ];
-        return view('direktur.dashboard.index', $data);
+        return view('operatorCabang.dashboard.index', $data);
     }
 }

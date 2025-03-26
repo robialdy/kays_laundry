@@ -10,6 +10,8 @@ class User extends Model
 
     protected $fillable = ['full_name','slug','no_hp','kota','alamat_lengkap','role','username','id_cabang','status','password'];
 
+    
+
     public function cabang()
     {
         return $this->belongsTo(Cabang::class ,'id_cabang');

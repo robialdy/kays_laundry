@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('id_layanan')->constrained('layanan')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('harga');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

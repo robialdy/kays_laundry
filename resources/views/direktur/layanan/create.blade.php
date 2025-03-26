@@ -35,20 +35,20 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <form action="{{ route('cabang.store') }}" class="form" method="post">
+                            <form action="{{ route('layanan.store') }}" method="post">
                                 @csrf
                                 <div class="row">
 
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="no_layanan">No Cabang <span class="text-danger">*</span></label>
+                                            <label for="no_layanan">No Layanan <span class="text-danger">*</span></label>
                                             <input type="text" id="no_layanan" class="form-control" name="no_layanan" value="{{ $no_layanan }}" readonly>
                                         </div>
                                     </div>
 
                                     <div class="col-6">
                                         <div class="form-group">
-                                            <label for="nama_layanan">Nama Cabang <span class="text-danger">*</span></label>
+                                            <label for="nama_layanan">Nama Layanan <span class="text-danger">*</span></label>
                                             <input type="text" id="nama_layanan" class="form-control"
                                                 placeholder="Masukan Nama Layanan" name="nama_layanan" value="{{ old('nama_layanan') }}">
                                                 @error('nama_layanan')

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('no_layanan');
             $table->string('nama_layanan');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

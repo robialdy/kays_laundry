@@ -36,8 +36,48 @@ class LayananController extends Controller
         return view('direktur.layanan.create', $data);
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        $request->validate([
+            'no_layanan' => 'required',
+            'nama_layanan' => 'required'
+        ]);
 
+        Layanan::create([
+            'no_layanan' => $request->no_layanan,
+            'nama_layanan' => $request->nama_layanan
+        ]);
+
+        return redirect()->route('layanan')->with('success', 'Proses Tambah Layanan Berhasil!');
+    }
+
+    public function edit($no_layanan)
+    {
+        $data = [
+            'title' =>'Edit Layanan',
+            'layanan' => Layanan::where('no_layanan', $no_layanan)->first(),
+        ];
+        return view('direktur.layanan.edit', $data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nama_layanan' => 'required'
+        ]);
+
+        Layanan::where('id', $id)->update([
+            'nama_layanan' => $request->nama_layanan
+        ]);
+
+        return redirect()->route('layanan')->with('success', 'Proses Edit Layanan Berhasil!');
+    }
+
+    public function delete($id)
+    {
+        $layanan = Layanan::where('id', $id)->first();
+        $layanan->delete();
+
+        return redirect()->route('layanan')->with('success', 'Proses Delete Layanan Berhasil!');
     }
 }

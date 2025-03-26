@@ -62,34 +62,13 @@
         <ul class="menu">
             <li class="sidebar-title">Menu</li>
 
-            <li class="sidebar-item  {{ request()->is('direktur') ? 'active' : '' }}">
-                <a href="{{ route('dashboard.direktur') }}" class='sidebar-link'>
+            <li class="sidebar-item  {{ request()->is('kurir') ? 'active' : '' }}">
+                <a href="{{ route('dashboard.kurir') }}" class='sidebar-link'>
                     <i class="bi bi-grid-fill"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
 
-            <li class="sidebar-item  {{ request()->is('user*') ? 'active' : '' }}">
-                <a href="{{ route('user') }}" class='sidebar-link'>
-                    <i class="bi bi-grid-fill"></i>
-                    <span>User</span>
-                </a>
-            </li>
-
-            <li class="sidebar-item  has-sub {{ request()->is('direktur/cabang*') || request()->is('direktur/layanan*') ? 'active' : '' }}">
-                <a href="#" class='sidebar-link'>
-                    <i class="bi bi-stack"></i>
-                    <span>Master Data</span>
-                </a>
-                <ul class="submenu ">
-                    <li class="submenu-item  {{ request()->is('direktur/cabang*') ? 'active' : '' }}">
-                        <a href="{{ route('cabang') }}" class="submenu-link">Cabang</a>
-                    </li>
-                    <li class="submenu-item {{ request()->is('direktur/layanan*') ? 'active' : '' }} ">
-                        <a href="{{ route('layanan') }}" class="submenu-link">Layanan</a>
-                    </li>
-                </ul>
-            </li>
 
         </ul>
     </div>
